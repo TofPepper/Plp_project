@@ -1,175 +1,232 @@
 
 
 // Update Profile
-document.getElementById("updateProfile").addEventListener('click', () => {
-    const updateContent = document.getElementById('updateContent');
-
-    // Toggle between view mode and edit mode
-    if (!updateContent.dataset.mode || updateContent.dataset.mode === 'view') {
-        // Switch to edit mode and show the form with prefilled values
-        updateContent.innerHTML = `
-            <br><h3 style="color:purple;">Edit Profile</h3><br>
-            <label style="font-weight:bold;">First Name: </label>
-            <input type="text" id="firstNameInput" placeholder="Enter new first name" value="${updateContent.dataset.first_name || ''}">
-            <br><br>
-            <label style="font-weight:bold;">Last Name: </label>
-            <input type="text" id="lastNameInput" placeholder="Enter new last name" value="${updateContent.dataset.last_name || ''}">
-            <br><br>
-            <label style="font-weight:bold;">Phone: </label>
-            <input type="text" id="phoneInput" placeholder="Enter new phone no" value="${updateContent.dataset.phone || ''}">
-            <br><br>
-            <label style="font-weight:bold;">Date of Birth: </label>
-            <input type="date" id="dobInput" value="${updateContent.dataset.date_of_birth || ''}">
-            <br><br>
-            <label style="font-weight:bold;">Gender: </label>
-            <input type="text" id="genderInput" placeholder="Enter new gender" value="${updateContent.dataset.gender || ''}">
-            <br><br>
-            <label style="font-weight:bold;">Address: </label>
-            <input type="text" id="addressInput" placeholder="Enter new address" value="${updateContent.dataset.address || ''}">
-            <br><br>
-            <button id="submitUpdate" style="font-weight:bold; color:black; background-color:rgb(235, 199, 235); padding:5px 10px;">Update Changes</button>
-        `;
-
-        updateContent.dataset.mode = 'edit'; 
-
-        document.getElementById('submitUpdate').addEventListener('click', async () => {
-            // Collect the updated profile data
-            const profileData = {
-                first_name: document.getElementById('firstNameInput').value,
-                last_name: document.getElementById('lastNameInput').value,
-                phone: document.getElementById('phoneInput').value,
-                date_of_birth: document.getElementById('dobInput').value,
-                gender: document.getElementById('genderInput').value,
-                address: document.getElementById('addressInput').value
-            };
-
-            console.log('Update button clicked. Data to be updated:', profileData);
-
-            try {
-                const updateResponse = await fetch('/patients/update', {
-                    method: 'put',
-                    headers: {
-                        'Content-Type': 'application/json' 
-                    },
-                    body: JSON.stringify(profileData)
-                });
-
-                const result = await updateResponse.json();
-
-                console.log('Server response:', result);
-                if (result.success) {
-                    alert('Profile updated successfully!');
-                    updateContent.dataset.mode = 'view';
-
-                    // Update the displayed profile info
+document.addEventListener('DOMContentLoaded', () => {
+    const updateProfileButton = document.getElementById("updateProfile");
+    
+    if (updateProfileButton) {
+        updateProfileButton.addEventListener('click', () => {
+            const updateContent = document.getElementById('updateContent');
+            
+            if (updateContent) {
+                // Toggle between view mode and edit mode
+                if (!updateContent.dataset.mode || updateContent.dataset.mode === 'view') {
+                    // Switch to edit mode and show the form with prefilled values
                     updateContent.innerHTML = `
-                        <br><br><h3 style="color:purple;"> Updated Profile</h3>
-                        <p style="font-weight:bold;">First Name: ${result.data.first_name || 'N/A'}</p><br>
-                        <p style="font-weight:bold;">Last Name: ${result.data.last_name || 'N/A'}</p><br>
-                        <p style="font-weight:bold;">Phone: ${result.data.phone || 'N/A'}</p><br>
-                        <p style="font-weight:bold;">Date of Birth: ${new Date(result.data.date_of_birth).toLocaleDateString() || 'N/A'}</p><br>
-                        <p style="font-weight:bold;">Gender: ${result.data.gender || 'N/A'}</p><br>
-                        <p style="font-weight:bold;">Address: ${result.data.address || 'N/A'}</p><br>
+                        <br><h3 style="color:purple;">Edit Profile</h3><br>
+                        <label style="font-weight:bold;">First Name: </label>
+                        <input type="text" id="firstNameInput" placeholder="Enter new first name" value="${updateContent.dataset.first_name || ''}">
+                        <br><br>
+                        <label style="font-weight:bold;">Last Name: </label>
+                        <input type="text" id="lastNameInput" placeholder="Enter new last name" value="${updateContent.dataset.last_name || ''}">
+                        <br><br>
+                        <label style="font-weight:bold;">Phone: </label>
+                        <input type="text" id="phoneInput" placeholder="Enter new phone no" value="${updateContent.dataset.phone || ''}">
+                        <br><br>
+                        <label style="font-weight:bold;">Date of Birth: </label>
+                        <input type="date" id="dobInput" value="${updateContent.dataset.date_of_birth || ''}">
+                        <br><br>
+                        <label style="font-weight:bold;">Gender: </label>
+                        <input type="text" id="genderInput" placeholder="Enter new gender" value="${updateContent.dataset.gender || ''}">
+                        <br><br>
+                        <label style="font-weight:bold;">Address: </label>
+                        <input type="text" id="addressInput" placeholder="Enter new address" value="${updateContent.dataset.address || ''}">
+                        <br><br>
+                        <button id="submitUpdate" style="font-weight:bold; color:black; background-color:rgb(235, 199, 235); padding:5px 10px;">Update Changes</button>
                     `;
-                } else {
-                    alert(result.message);
+
+                    updateContent.dataset.mode = 'edit'; 
+
+                    // Add event listener for submit button after rendering the form
+                    const submitUpdateButton = document.getElementById('submitUpdate');
+                    if (submitUpdateButton) {
+                        submitUpdateButton.addEventListener('click', async () => {
+                            // Collect the updated profile data
+                            const profileData = {
+                                first_name: document.getElementById('firstNameInput').value,
+                                last_name: document.getElementById('lastNameInput').value,
+                                phone: document.getElementById('phoneInput').value,
+                                date_of_birth: document.getElementById('dobInput').value,
+                                gender: document.getElementById('genderInput').value,
+                                address: document.getElementById('addressInput').value
+                            };
+
+                            console.log('Update button clicked. Data to be updated:', profileData);
+
+                            try {
+                                const updateResponse = await fetch('/patients/update', {
+                                    method: 'put',
+                                    headers: {
+                                        'Content-Type': 'application/json' 
+                                    },
+                                    body: JSON.stringify(profileData)
+                                });
+
+                                const result = await updateResponse.json();
+
+                                console.log('Server response:', result);
+                                if (result.success) {
+                                    alert('Profile updated successfully!');
+                                    updateContent.dataset.mode = 'view';
+
+                                    // Update the displayed profile info
+                                    updateContent.innerHTML = `
+                                        <br><br><h3 style="color:purple;">Updated Profile</h3>
+                                        <p style="font-weight:bold;">First Name: ${result.data.first_name || 'N/A'}</p><br>
+                                        <p style="font-weight:bold;">Last Name: ${result.data.last_name || 'N/A'}</p><br>
+                                        <p style="font-weight:bold;">Phone: ${result.data.phone || 'N/A'}</p><br>
+                                        <p style="font-weight:bold;">Date of Birth: ${new Date(result.data.date_of_birth).toLocaleDateString() || 'N/A'}</p><br>
+                                        <p style="font-weight:bold;">Gender: ${result.data.gender || 'N/A'}</p><br>
+                                        <p style="font-weight:bold;">Address: ${result.data.address || 'N/A'}</p><br>
+                                    `;
+                                } else {
+                                    alert(result.message || 'Failed to update profile');
+                                }
+                            } catch (error) {
+                                console.error('Error updating profile:', error);
+                                alert('An error occurred while updating your profile. Please try again later.');
+                            }
+                        });
+                    }
                 }
-            } catch (error) {
-                console.error('Error updating profile:', error);
+            } else {
+                console.error('Update content section not found.');
             }
         });
+    } else {
+        console.error('Update profile button not found!');
     }
 });
 
+// View profile
+document.addEventListener('DOMContentLoaded', () => {
+    const viewProfileButton = document.getElementById('viewProfileButton');
+    if (viewProfileButton) {
+        viewProfileButton.addEventListener('click', async () => {
+            try {
+                // Fetch profile data from the server
+                const response = await fetch('/patients/Vprofile');
+                const result = await response.json();
 
+                // Check if the response is successful
+                if (result.success) {
+                    // Assuming you have HTML elements to display the profile
+                    const profileBox = document.getElementById('profileBox');
+                    const overlay = document.getElementById('overlay');
+                    const profileContent = document.getElementById('profileContent');
 
-// view profile
-document.getElementById('viewProfileButton').addEventListener('click', async () => {
-    try {
-        const response = await fetch('/patients/Vprofile');
-        const result = await response.json();
+                    if (profileBox && overlay && profileContent) {
+                        // Populate the profile content with the fetched data
+                        profileContent.innerHTML = `
+                            <p>First Name: ${result.data.first_name || 'N/A'}</p>
+                            <p>Last Name: ${result.data.last_name || 'N/A'}</p>
+                            <p>Email: ${result.data.email || 'N/A'}</p>
+                            <p>Phone: ${result.data.phone || 'N/A'}</p>
+                            <p>Date of Birth: ${new Date(result.data.date_of_birth).toLocaleDateString() || 'N/A'}</p>
+                            <p>Gender: ${result.data.gender || 'N/A'}</p>
+                            <p>Country: ${result.data.country || 'N/A'}</p>
+                        `;
 
-        if (result.success) {
-        // Assuming you have an HTML element to display the profile
-            const profileBox = document.getElementById('profileBox');
-            const overlay = document.getElementById('overlay');
-            const profileContent = document.getElementById('profileContent');
+                        // Display the profile box and overlay
+                        profileBox.style.display = 'block';
+                        overlay.style.display = 'block';
+                    } else {
+                        console.error("Profile display elements not found.");
+                    }
 
-            profileContent.innerHTML = `
-            <p>First Name: ${result.data.first_name || 'N/A' }</p>
-            <p>Last Name: ${result.data.last_name || 'N/A'}</p>
-            <p>Email: ${result.data.email || 'N/A'}</p>
-            <p>Phone: ${result.data.phone || 'N/A'}</p>
-            <p>Date of birth: ${new Date(result.data.date_of_birth).toLocaleDateString() || 'N/A'}</p>
-            <p>Gender: ${result.data.gender || 'N/A'}</p>
-            <p>Country: ${result.data.country || 'N/A'}</p>
-            `;
-
-            // Display the profile box and overlay
-            profileBox.style.display = 'block';
-            overlay.style.display = 'block';
-
-        } else {
-            alert(result.message);
-        }
-    } catch (error) {
-        console.error('Error fetching profile:', error);
-    }
-});
-
-// Close the profile box and overlay
-document.getElementById('closeProfile').addEventListener('click', () => {
-    document.getElementById('profileBox').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
-});
-
-// Close the profile box if the user clicks on the overlay
-document.getElementById('overlay').addEventListener('click', () => {
-    document.getElementById('profileBox').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
-});
-
-// log out
-document.getElementById('logout').addEventListener('click', async ()  => {
-    try {
-        const response = await fetch('/patients/logout', {
-            method: 'post',
-            credentials: 'include'
-        })
-
-        const result = await response.json()
-
-        if (result.success){
-            window.location.href = '/indexp.html'
-            
-        } else {
-            alert("Failed to log out. Please try again.")
-        }
-    } catch (error){
-        console.error('Error logging out :', error);
-    } 
-})
-
-
-//delete account
-document.getElementById('deleteAccount').addEventListener('click', async () =>{
-    if (confirm('Are you sure you want to delete your account? This action cannot be undone!'))
-    try{
-        const response = await fetch('/patients/delete', {
-            method: 'delete',
-            credentials: 'include'
+                } else {
+                    alert(result.message || 'Failed to load profile.');
+                }
+            } catch (error) {
+                console.error('Error fetching profile:', error);
+                alert('An error occurred while fetching your profile. Please try again later.');
+            }
         });
+    } else {
+        console.error('View Profile button not found!');
+    }
 
-        const result = await response.json()
+    // Close the profile box and overlay when the user clicks the close button
+    const closeProfileButton = document.getElementById('closeProfile');
+    if (closeProfileButton) {
+        closeProfileButton.addEventListener('click', () => {
+            document.getElementById('profileBox').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        });
+    }
 
-        if (result.success){
-            alert('Account deleted successfully! Click "OK" to continue')
-            window.location.href = '/indexp.html'
-        } else {
-            alert('Unable to delete account! Try again later')
-        }
-    } catch (error) {
-        console.error("Error deleting account:", error )
+    // Close the profile box if the user clicks on the overlay
+    const overlayElement = document.getElementById('overlay');
+    if (overlayElement) {
+        overlayElement.addEventListener('click', () => {
+            document.getElementById('profileBox').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        });
+    }
+});
+
+// Log out
+document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logout');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', async () => {
+            try {
+                // Send a POST request to log the user out
+                const response = await fetch('/patients/logout', {
+                    method: 'POST',  // POST method for logging out
+                    credentials: 'include',  // Include credentials (cookies, session data)
+                });
+
+                const result = await response.json();
+
+                // Handle the response based on success or failure
+                if (response.ok && result.success) {
+                    window.location.href = '/indexp.html';  // Redirect to the home page after logout
+                } else {
+                    alert(result.message || "Failed to log out. Please try again.");
+                }
+            } catch (error) {
+                console.error('Error logging out:', error);
+                alert('An error occurred while logging out. Please try again later.');
+            }
+        });
+    } else {
+        console.error('Logout button not found!');
+    }
+});
+
+// Delete account
+document.addEventListener('DOMContentLoaded', () => {
+    const deleteButton = document.getElementById('deleteAccount');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', async () => {
+            // Confirm the action with the user
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone!')) {
+                try {
+                    // Make a DELETE request to the server
+                    const response = await fetch('/patients/delete', {
+                        method: 'DELETE',
+                        credentials: 'include',  // Include credentials for authenticated sessions
+                    });
+
+                    const result = await response.json();
+
+                    // Handle server response
+                    if (response.ok && result.success) {
+                        alert('Account deleted successfully! Click "OK" to continue');
+                        window.location.href = '/indexp.html'; // Redirect to the homepage after deletion
+                    } else {
+                        alert(result.message || 'Unable to delete account! Try again later');
+                    }
+                } catch (error) {
+                    // Log any error that occurs during the request
+                    console.error('Error deleting account:', error);
+                    alert('An error occurred while trying to delete your account. Please try again later.');
+                }
+            }
+        });
+    } else {
+        console.error('Delete account button not found!');
     }
 });
 
@@ -374,7 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
 //To view appoinment history
 document.addEventListener('DOMContentLoaded', () => {
     const appointmentHistoryButton = document.getElementById('history'); // Your button ID
@@ -439,192 +495,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
-//to login for patient
-document.getElementById("loginform").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-      
-    let valid = true;
-    const formData = {
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-    };
-    
-    document.getElementById('emailError'). innerHTML = ''
-    document.getElementById('passwordError'). innerHTML = ''
-  
-    //validate email
-    const EmailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    let email = document.getElementById('email').value;
-    if(email === ""){
-      document.getElementById('emailError').innerHTML = 'Error! Email is required.'
-      valid = false;
-    } else if (!EmailPattern.test(email)){
-      document.getElementById('emailError').innerHTML = 'Email format should be: user@example.com.'
-      valid = false;
-    } 
-      
-    //validate password
-    let password = document.getElementById('password').value;
-    if(password === ""){
-      document.getElementById('passwordError').innerHTML = 'Error! Password is required.'
-      valid = false;
-    } else if(password.length < 8){
-      document.getElementById('passwordError').innerHTML = 'Error! Password must be at least 8 characters long.'
-      valid = false;
-    }
-    
-    try {
-      const response = await fetch('/patients/login', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-    
-      const result = await response.json();
-    
-      if (response.ok) {
-        alert(result.message || 'Login successful!');
-        window.location.href = "/patient.html";
-      } else {
-        alert(result.message || 'Login failed. Please check your credentials and try again.');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('An error occurred. Please try again.');
-    }
-});
-
-//to register for patient
-document.getElementById("registrationform").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-      
-    let valid = true;
-    
-    const formData = {
-      first_name: document.getElementById("first_name").value,
-      last_name: document.getElementById("last_name").value,
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      confirmPassword: document.getElementById("confirmPassword").value,
-      age: document.getElementById("age").value,
-      gender: document.querySelector('input[name="gender"]:checked').value,
-      country: document.getElementById("country").value,
-    };
-    
-    //clear error messages
-    document.getElementById('lastnameError'). innerHTML = ''
-    document.getElementById('firstnameError'). innerHTML = ''
-    document.getElementById('emailError'). innerHTML = ''
-    document.getElementById('passwordError'). innerHTML = ''
-    document.getElementById('confirmPasswordError'). innerHTML = ''
-    document.getElementById('ageError'). innerHTML = ''
-    document.getElementById('genderError'). innerHTML = ''
-    document.getElementById('countryError'). innerHTML = ''
-    document.getElementById('termsError'). innerHTML = ''
-  
-    //validate name
-    let first_name = document.getElementById('first_name').value;
-    if(first_name === ""){
-      document.getElementById('firstnameError').innerHTML = 'Error! First Name is required.'
-      valid = false;
-    }
-  
-    let last_name = document.getElementById('last_name').value;
-    if(last_name === ""){
-      document.getElementById('lastnameError').innerHTML = 'Error! Last Name is required.'
-      valid = false;
-    }
-  
-    //validate email
-    const EmailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    let email = document.getElementById('email').value;
-    if(email === ""){
-      document.getElementById('emailError').innerHTML = 'Error! Email is required.'
-      valid = false;
-    } else if (!EmailPattern.test(email)){
-      document.getElementById('emailError').innerHTML = 'Email format should be: user@example.com.'
-      valid = false;
-    }
-  
-    //validate password
-    let password = document.getElementById('password').value;
-    if(password === ""){
-      document.getElementById('passwordError').innerHTML = 'Error! Password is required.'
-      valid = false;
-    } else if(password.length < 8){
-      document.getElementById('passwordError').innerHTML = 'Error! Password must be at least 8 characters long.'
-      valid = false;
-    }
-  
-    //validate confirm password
-    let confirmPassword = document.getElementById('confirmPassword').value;
-    if(confirmPassword === ""){
-      document.getElementById('confirmPasswordError').innerHTML = 'Error! It is required'
-      valid = false;
-    } else if(confirmPassword !== password){
-      document.getElementById('confirmPasswordError').innerHTML = 'Incorrect! Password does not match.'
-      valid = false;
-    }
-  
-    //validate age
-    let age = document.getElementById('age').value;
-    if(age === ""){
-      document.getElementById('ageError').innerHTML = 'Error! Age is required.'
-      valid = false;
-    } else if(isNaN(age) || age < 18 || age > 100){
-      document.getElementById('ageError').innerHTML = 'Error! Age must be a number not less than 18 and not greater than 100.'
-      valid = false;
-    }
-      
-    //validate gender
-    let gender = document.querySelector('input[name="gender"]:checked');
-    if(!gender){
-      document.getElementById('genderError').innerHTML = 'Error! Please select a gender.'
-      valid = false;
-    }
-  
-    //validate country
-    let country = document.getElementById('country').value;
-    if(country === ""){
-      document.getElementById('countryError').innerHTML = 'Error! Please select a country.'
-      valid = false;
-    }
-  
-    //validate terms
-    let terms = document.getElementById('terms').checked;
-    if(!terms){
-      document.getElementById('termsError').innerHTML = 'Error! You must agree to the terms and conditions.'
-      valid = false;
-    }
-    
-    try {
-      const response = await fetch('/patients/register', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-    
-      const result = await response.json();
-    
-      if (response.ok) {
-        alert(result.message || 'Registration successful!');
-        window.location.href = "/patient.html"; 
-      } else {
-        alert(result.message || 'Registration failed. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('An error occurred. Please try again.');
-    }
-    return valid;
-});  
-
 
 
 

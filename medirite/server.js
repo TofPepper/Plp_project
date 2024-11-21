@@ -55,9 +55,9 @@ const adminRoutes = require('./routes/admin');
 
 // Using the routes
 app.use('/patients', patientRoutes);
-app.use('/doctors', doctorRoutes);
-app.use('/appointments', appointmentRoutes);
-app.use('/admin', adminRoutes);
+//app.use('/doctors', doctorRoutes);
+//app.use('/appointments', appointmentRoutes);
+//app.use('/admin', adminRoutes);
 
 
 // Route for the home page (index.html)
@@ -87,6 +87,7 @@ app.get('/flogin.html', (req, res) => {
 app.get('/fregister.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'fregister.html'));
 });
+
 
 // Route for the admin dashboard (admin.html)
 app.post('/admin.html', (req, res) => {

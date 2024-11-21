@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+  
+header {
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: purple;
+}
+
+body{
+  background-image: url(https://images.pexels.com/photos/4047068/pexels-photo-4047068.jpeg?auto=compress&cs=tinysrgb&w=600);
+  background-position: center;
+  background-size: cover;
+}
+
+.main-container{
+    margin: 20px;
+}
+
+.main-container h3{
+    padding: 15px;
+    border-radius: 8px;
+    background-color: purple;
+    color: white;
+    width: 40%;
+    cursor: pointer; 
+}
+
+.main-container ul{
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.main-container ul li{
+    padding: 5px 0;
+}
+
+.features{
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    color: purple;
+    line-height: 1.5rem;
+}
+  
+.features:hover{
+    text-decoration: none;
+    cursor: pointer;
+    transition: ease-in;
+    color: black;
+}
+
+
+.box {
+    display: none; 
+    position: fixed; 
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 400px;
+    max-height: 80vh; 
+    padding: 20px; 
+    background-color: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    z-index: 1000;  
+    overflow-y: auto;
+}
+  
+.box h2{
+    color: purple;
+}
+
+
+#profileContent p{
+    line-height: 1.5rem;
+    color: black;
+    font-weight: bold;
+}
+  
+
+.overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+    z-index: 999;  /* Just behind the modal */
+}
+  
+.profileButton{
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: rgb(235, 199, 235);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profileButton:hover {
+    background-color: black;
+    color: purple;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    width: 20%;
+    border: 1px solid #ddd;
+    text-align: left;
+}

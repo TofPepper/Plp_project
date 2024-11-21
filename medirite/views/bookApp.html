@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRite_Appointment</title>
+    <link rel="stylesheet" href="/css/bookApp.css">
+</head>
+<body>
+    <h1>Book an appointment with us</h1>
+    <form method="get" id="bookForm">
+        <!--Appointment dates, time and status. Appointment id, patient id and doctor id-->
+        
+        <!--
+        <label for="username">Username:</label>
+        <span class="error" id="usernameError"></span>
+        <input type="text" id="username" name="username">
+        -->
+
+        <label for="email">Email Address:</label>
+        <span class="error" id="emailError"></span>
+        <input type="text" id="email" name="email">
+
+       <br><label for="contact">Preferred Contact Method:</label>
+        <span class="error" id="contactError"></span>
+        <select id="contact">
+            <option value="">--Select--</option>
+            <option value="Phone Call">Phone Call</option>
+            <option value="Email">Email</option>
+            <option value="In-Person">In-Person</option>
+            <option value="Video Call">Video Call</option>
+        </select>
+
+       <!--
+       <br><br> <label for="purpose">Purpose of Appointment:</label>
+        <span class="error" id="purposeError"></span>
+        <select id="purpose">
+            <option value="">--select--</option>
+            <option value="Symptom Evaluation">Symptom Evaluation</option>
+            <option value="Routine Checkup">Routine Checkup</option>
+            <option value="Discuss Test Results">Discuss Test Results</option>
+            <option value="Medication Refill">Medication Refill</option>
+            <option value="Preventive Care (vaccination)">Preventive Care (vaccination)</option>
+            <option value="Chronic Disease Management">Chronic Disease Management</option>
+            <option value="Injury Recovery">Injury Recovery</option>
+            <option value="Preoperative or Postoperative Care">Preoperative or Postoperative Care</option>
+            <option value="Others">Others</option>
+        </select> 
+       -->
+
+        <!--
+        <br><br><label for="service">Service Type:</label>
+        <span class="error" id="serviceError"></span>
+        <select id="service">
+            <option value="">--select--</option>
+            <option value="Family Medicine">Family Medicine</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Dentistry">Dentistry</option>
+            <option value="Physiotherapy">Physiotherapy</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Mental Health Counselling">Mental Health Counselling</option>
+            <option value="Prenatal/Postnatal Care">Prenatal/Postnatal Care</option>
+            <option value="Lab Tests">Lab Tests</option>
+            <option value="Others">Others</option>
+        </select>
+        -->
+
+        <br><br> <label for="date">Appointment Date:</label>
+        <span class="error" id="dateError"></span>
+        <input type="date" id="date" name="date">
+
+        <br> <label for="time">Preferred Time Slot:</label>
+        <span class="error" id="timeError"></span>
+        <input type="time" id="time" name="time"><br>
+
+        <br><label for="doctor">Doctor</label>
+        <select id="doctor" name="doctor_id">
+            
+        </select>
+
+       <br> <label for="terms">Accept Terms and Condition</label>
+        <span class="error" id="termsError"></span>
+        <input type="checkbox" id="terms" name="terms"><br>
+
+        <button type="submit">Submit</button>
+        
+    </form>
+
+    <div id="formSummary"></div>
+
+    <footer class="footer">
+        <p>&copy; 2024 MediRite - All Rights Reserved</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">X</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+        <p>Contact us: info@medirite.com</p>
+    </footer>
+
+    <script src="/js/bookApp.js"></script>
+    
+</body>
+</html>

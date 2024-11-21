@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRitePatient</title>
+    <link rel="stylesheet" href="/css/patient.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div class="home">
+        <header>
+            <div class = container>
+                <h1>MediRite</h1>
+                <label for="menu-toggle" class="hamburger">&#9776;</label>
+                <input type="checkbox" id="menu-toggle">
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#appoint">Appointments</a></li>
+                        <li><a href="#consult">Virtual Consultations</a></li>
+                        <li><a href="#centres">Nearby Healthcare Centres</a></li>
+                        <li><a href="#drug">Drug Prescription</a></li>
+                        <li><a href="#doctors">View my Doctors</a></li>
+                        <li><a href="#profile">My Profile</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="main-container"><br><br>
+            <main class="content">
+                <input type="text" placeholder="Search for nearby healthcare centres..">
+            </main>
+            <aside class="sidebar">
+
+            </aside>
+        </div>
+    </div>
+
+    <section class="services">
+        <div class="service">
+            <h3 id="appoint">Appointments</h3>
+            <p>MediRite allows you to book appointments with your preferred doctor, date and time. You can also view your appointments history, re-schedule or cancel your appointments.</p><br>
+            <a href="bookApp.html" class="profile">Book an appointment</a>
+            <a href="#" id="upApp" class="profile">Upcoming appointment(s)</a>
+            <a href="#" id="history" class="profile">Appointment history</a>
+        </div>
+        <div class="service">
+            <h3 id="consult">Virtual Consultations</h3>
+            <p>Consult with your preferred doctor on this platform.</p>
+        </div>
+        <div class="service">
+            <h3 id="centres">Nearby Healthcare centres</h3>
+            <p>Search for a nearby healthcare centres around you.</p>
+        </div>
+        <div class="service">
+            <h3 id="drug">Drug Prescription</h3>
+            <P>Check the dosage of your drug to avoid drug misuse or abuse. Know the drug to you use for your health concern.</P>
+        </div>
+        <div class="service">
+            <h3 id="doctors">My Doctors</h3>
+            <a href="#" id="doctor-List" class="profile">List of doctors, their specialisation and available days</a>
+        </div>
+        <div class="service">
+            <h3 id="profile">My Profile</h3>
+            <a href="#" id="viewProfileButton" class="profile">View my Profile</a>
+            <a href="#" id="logout" class="profile">Logout</a>
+            <a href="#" id="deleteAccount" class="profile">Delete my account</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 MediRite - All Rights Reserved</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">X</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+        <p>Contact us: info@medirite.com</p>
+    </footer>
+
+    <!-- Profile box and overlay -->
+    <div id="overlay"></div> 
+    <div id="profileBox" class="Box">
+        <h2>My Profile</h2><br>
+        <div id="profileContent">
+           
+        </div>
+        <div id="updateContent">
+            
+        </div>
+        <button id="closeProfile" class="profileButton">Close</button> 
+        <button id="updateProfile" class="profileButton">
+            <i class="fas fa-pencil-alt"></i>Edit
+        </button>
+    </div>
+
+   
+    <div id="doctorOverlay"></div> 
+    <div id="doctorBox" class="Box">
+        <h3>List of Doctors</h3>
+        <div id="doctorContent">
+            <ol id="doctorList">
+            
+            </ol>
+        </div>
+        <button id="closeDoctorList" class="doctorButton">Close</button>
+    </div>
+
+    <!--To view upcoming appointments-->
+    <div id="appointments-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="appointments-list"></div>
+
+            <div id="updatedAppointmentContent"></div>
+        
+        </div>
+    </div> 
+    
+    <!-- Appointment History Modal -->
+    <div id="appointmentHistoryModal" class="modal">
+        <div class="modal-content">
+            <h3>Appointment History</h3>
+            <table id="appointmentsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Doctor</th>
+                        <th>Specialisation</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="/js/patients.js"></script>
+        
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRite-Login</title>
+    <link rel="stylesheet" href="/css/flogin.css">
+</head>
+<body>
+    <header>
+        <h1> MediRite</h1>
+    </header>
+
+    <main>
+        <form method="post" id="loginform">
+            <label for="email"> Email:</label>
+            <span id="emailError" class="error"></span>
+            <input type="email" id="email" name="email" placeholder="user@example.com">
+            
+
+            <label for="password"> Password:</label>
+            <input type="password" id="password" name="password">
+            <span id="passwordError" class="error"></span>
+
+            <button type="submit"> LOGIN</button>
+        </form>
+    </main>
+
+    <p id="p-one"> Register <a id="a-one" href="fregister.html"> Here </a></p>
+
+    <br><br>
+    <footer class="footer">
+        <p>&copy; 2024 MediRite - All Rights Reserved</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">X</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+        <p>Contact us: info@medirite.com</p>
+    </footer>
+    
+
+    <script src="/js/patient.js"></script>
+    
+</body>
+</html>

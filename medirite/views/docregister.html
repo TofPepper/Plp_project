@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRite</title>
+    <link rel="stylesheet" href="/css/docregister.css">
+</head>
+<body>
+
+    <header>
+        <h1> MediRite </h1>
+    </header>
+
+    <main>
+        <form method="post" id="registrationform">
+            <h3> Register Here</h3>
+            <label for="first_name"> First Name: </label>
+            <span id="firstnameError" class="error"></span>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name">
+
+            <label for="last_name"> Last Name: </label>
+            <span id="lastnameError" class="error"></span>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name">
+            
+
+            <label for="email"> Email:</label>
+            <span id="emailError" class="error"></span>
+            <input type="email" id="email" name="email" placeholder="user@example.com">
+            
+
+            <label for="specialisation"> Specialisation:</label>
+            <input type="specialisation" id="specialisation" name="specialisation">
+
+            <label for="days"> Schedule Days:</label>
+            <input type="days" id="days" name="days">
+
+            <br><label for="phone"> Phone Number:</label>
+            <input type="number" id="phone" name="phone">
+
+
+            <br><br><label>Select gender</label>
+            <label for="male" style="display: inline;"> Male </label>
+            <input type="radio" id="male" name="gender" value="Male"style="display: inline;"> 
+            <label for="female" style="display: inline;"> Female </label>
+            <input type="radio" id="female" name="gender" value="Female" style="display: inline;">
+            <label for="rathernotsay" style="display: inline;"> Rather Not Say </label>
+            <input type="radio" id="rathernotsay" name="gender" value="rathernotsay" style="display: inline;">
+            <span id="genderError" class="error"></span>
+
+            <br><br><label for="country"> Country:</label>
+            <select id="country" name="country">
+                <option value="">Select your Country</option>
+                <option>Algeria</option>
+                <option>Angola</option>
+                <option>Benin</option>
+                <option>Botswana</option>
+                <option>Burkina Faso</option>
+                <option>Burundi</option>
+                <option>Cabo Verde</option>
+                <option>Cameroon</option>
+                <option>Central African Republic</option>
+                <option>Chad</option>
+                <option>Comoros</option>
+                <option>Congo</option>
+                <option>Djibouti</option>
+                <option>Egypt</option>
+                <option>Equatorial Guinea</option>
+                <option>Eritea</option>
+                <option>Eswatini</option>
+                <option>Ethiopia</option>
+                <option>Gabon</option>
+                <option>Gambia</option>
+                <option>Ghana</option>
+                <option>Guinea</option>
+                <option>Guinea-Bissau</option>
+                <option>Ivory Coast</option>
+                <option>Kenya</option>
+                <option>Lesotho</option>
+                <option>Liberia</option>
+                <option>Libya</option>
+                <option>Madagascar</option>
+                <option>Malawi</option>
+                <option>Mali</option>
+                <option>Maurutina</option>
+                <option>Mauritius</option>
+                <option>Morocco</option>
+                <option>Mozambique</option>
+                <option>Nambia</option>
+                <option>Niger</option>
+                <option>Nigeria</option>
+                <option>Senegal</option>
+                <option>Seychelles</option>
+                <option>Sierra Leone</option>
+                <option>Somalia</option>
+                <option>South Africa</option>
+                <option>South Sudan</option>
+                <option>Sudan</option>
+                <option>Tanzania</option>
+                <option>Togo</option>
+                <option>Tunisia</option>
+                <option>Uganda</option>
+                <option>Zambia</option>
+                <option>Zimbabwe</option>
+            </select>
+            <span id="countryError" class="error"></span>
+            
+
+            <br><br><label for="terms" style="display: inline;"> Accept Terms and Conditions</label>
+            <input type="checkbox" id="terms" name="terms" style="display: inline;">
+            <span id="termsError" class="error"></span>
+            
+            
+            <br><br><button type="submit"> REGISTER </button>
+        </form>
+
+    </main>
+
+    <p id="p-one"> Already have an account? <a id="a-one" href="doclogin.html"> Login </a></p>
+    <br><br>
+    
+    <script src="/js/doctor.js"></script>
+</body>
+</html>

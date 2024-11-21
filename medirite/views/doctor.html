@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRiteDoctors</title>
+    <link rel="stylesheet" href="/css/doctor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>MediRite</h1>
+        <p><a href="/">Go back to home page</a></p>
+    </header>
+    <div class="main-container">
+        <h3>My Dashboard</h3>
+        <ul>
+            <li><a href="#" class="features">Manage Availability</a></li>
+            <li><a href="#" class="features">Manage Specialisation</a></li></li>
+        </ul>
+        <br><br><h3>Schedules</h3>
+        <ul>
+            <li><a href="#" class="features">Manage schedules</a></li>
+            <li><a href="#" class="features">Update schedules</a></li>
+        </ul>
+        <br><br><h3>Appointments</h3>
+        <ul>
+            <li><a href="#" class="features" id="viewAppointment">View appointments</a></li>
+            <li><a href="#" class="features">Manage appointments</a></li>
+        </ul>
+        <br><br><h3>My profile</h3>
+        <ul>
+            <li><a href="#" class="features" id="viewProfileButton">View/Update my profile</a></li>
+            <li><a href="#" class="features" id="logout">Log out</a></li>
+            <li><a href="#" class="features" id="deleteAccount">Delete my account</a></li>
+        </ul>
+    </div>
+ 
+    <!-- Profile box and overlay -->
+    <div id="overlay" class="overlay"></div> 
+    <div id="profileBox" class="box">
+        <h2>My Profile</h2>
+        <div id="profileContent">
+           
+        </div>
+        <div id="updateContent">
+            
+        </div>
+        <button id="closeProfile" class="profileButton">Close</button>
+        <button id="updateProfile" class="profileButton">
+            <i class="fas fa-pencil-alt"></i>Edit
+        </button>
+    </div>
+
+    <!--Box and overlay to view doctor's upcoming appointments-->
+    <div id="overlay" class="overlay"></div>
+    <div id="appointmentBox" class="box">
+        <h2>My appointments</h2>
+        <div id="appointmentContent"></div>
+        <button id="close" class="profileButton">Close</button>
+    </div>
+
+    <script src="/js/doctor.js"></script>
+</body>
+</html>

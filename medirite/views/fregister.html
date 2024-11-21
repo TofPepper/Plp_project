@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRite</title>
+    <link rel="stylesheet" href="/css/fregister.css">
+</head>
+<body>
+
+    <header>
+        <h1> MediRite </h1>
+    </header>
+
+    <main>
+        <form method="post" id="registrationform">
+            <h3> Register Here</h3>
+            <label for="first_name"> First Name: </label>
+            <span id="firstnameError" class="error"></span>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name">
+
+            <label for="last_name"> Last Name: </label>
+            <span id="lastnameError" class="error"></span>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name">
+            
+
+            <label for="email"> Email:</label>
+            <span id="emailError" class="error"></span>
+            <input type="email" id="email" name="email" placeholder="user@example.com">
+            
+
+            <label for="password"> Password:</label>
+            <input type="password" id="password" name="password">
+            <span id="passwordError" class="error"></span>
+
+            <label for="confirmPassword"> Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <span id="confirmPasswordError" class="error"></span>
+
+            <label for="age"> Age:</label>
+            <span id="ageError" class="error"></span>
+            <input type="text" id="age" name="age">
+            
+
+            <h4> Select your gender </h4>
+            <label for="male" style="display: inline;"> Male </label>
+            <input type="radio" id="male" name="gender" value="Male"style="display: inline;"> 
+            <label for="female" style="display: inline;"> Female </label>
+            <input type="radio" id="female" name="gender" value="Female" style="display: inline;">
+            <label for="rathernotsay" style="display: inline;"> Rather Not Say </label>
+            <input type="radio" id="rathernotsay" name="gender" value="rathernotsay" style="display: inline;">
+            <span id="genderError" class="error"></span>
+
+            <label for="country"> Country:</label>
+            <select id="country" name="country">
+                <option value="">Select your Country</option>
+                <option value="Algeria">Algeria</option>
+                <option value="Angola">Angola</option>
+                <option value="Benin">Benin</option>
+                <option value="Botswana">Botswana</option>
+                <option value="Burkina Faso">Burkina Faso</option>
+                <option value="Burundi">Burundi</option>
+                <option value="Cabo Verde">Cabo Verde</option>
+                <option value="Cameroon">Cameroon</option>
+                <option value="Central African Republic">Central African Republic</option>
+                <option value="Chad">Chad</option>
+                <option value="Comoros">Comoros</option>
+                <option value="Congo">Congo</option>
+                <option value="Djibouti">Djibouti</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Equatorial Guinea">Equatorial Guinea</option>
+                <option value="Eritea">Eritea</option>
+                <option value="Eswatini">Eswatini</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Gabon">Gabon</option>
+                <option value="Gambia">Gambia</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Guinea">Guinea</option>
+                <option value="Guinea-Bissau">Guinea-Bissau</option>
+                <option value="Ivory Coast">Ivory Coast</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Lesotho">Lesotho</option>
+                <option value="Liberia">Liberia</option>
+                <option value="Libya">Libya</option>
+                <option value="Madagascar">Madagascar</option>
+                <option value="Malawi">Malawi</option>
+                <option value="Mali">Mali</option>
+                <option value="Maurutina">Maurutina</option>
+                <option value="Mauritius">Mauritius</option>
+                <option value="Morocco">Morocco</option>
+                <option value="Mozambique">Mozambique</option>
+                <option value="Nambia">Nambia</option>
+                <option value="Niger">Niger</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Seychelles">Seychelles</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+                <option value="Somalia">Somalia</option>
+                <option value="South Africa">South Africa</option>
+                <option value="South Sudan">South Sudan</option>
+                <option value="Sudan">Sudan</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Togo">Togo</option>
+                <option value="Tunisia">Tunisia</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+            </select>
+            <span id="countryError" class="error"></span>
+            
+
+            <br><br><label for="terms" style="display: inline;"> Accept Terms and Conditions</label>
+            <input type="checkbox" id="terms" name="terms" style="display: inline;">
+            <span id="termsError" class="error"></span><br><br>
+            
+            
+            <button type="submit"> REGISTER </button>
+        </form>
+
+    </main>
+
+    <p id="p-one"> Already have an account? <a id="a-one" href="flogin.html"> Login </a></p>
+    <br><br>
+
+    <footer class="footer">
+        <p>&copy; 2024 MediRite - All Rights Reserved</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">X</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+        <p>Contact us: info@medirite.com</p>
+    </footer>
+    
+    <script src="/js/patients.js"></script>
+</body>
+</html>

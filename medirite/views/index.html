@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRite</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="center">
+        <br><br>
+        <h1>MediRite</h1>
+        <p>Continue as</p>
+        <ul>
+            <li><a href="indexp.html">Patient</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-btn">Doctor</a>
+                <div class="dropdown-content">
+                    <a href="doclogin.html">Login</a>
+                    <a href="docregister.html">Register</a>
+                </div>
+            </li>
+            <li><a href="admin.html" id="admin-link">Admin</a></li>
+        </ul>
+    </div>
+
+    <!-- Hidden Admin Login Form -->
+    <div id="admin-login" class="hidden">
+        <form id="admin-login-form" method="post">
+            <input type="text" id="admin-username" name="username" placeholder="Username">
+            <span id="usernameError" class="error" style="color: red; font-size: 12px;"></span>
+            
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('admin-link').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const adminForm = document.getElementById('admin-login');
+    if (adminForm.style.display === 'none' || adminForm.style.display === '') {
+        adminForm.style.display = 'block'; // Show the form
+    } else {
+        adminForm.style.display = 'none'; // Hide the form
+    }
+});
+
+document.getElementById("admin-login-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    let valid = true
+
+    const formData = {
+        username: document.getElementById('admin-username').value,
+       // role: document.getElementById('admin-role').value,
+    }
+
+
+    document.getElementById('usernameError').innerHTML = ''
+    //document.getElementById('roleError').innerHTML = ''
+
+    const username = document.getElementById('admin-username').value;
+     //const role = document.getElementById('admin-role').value;
+
+    if(username === ""){
+        document.getElementById('usernameError').innerHTML = 'Error! Username is required.'
+        valid = false; 
+    }
+
+    /*
+    if(role === ""){
+        document.getElementById('roleError').innerHTML = 'Error! Role is required.'
+        valid = false;
+    }
+
+    if(role !== 'superadmin' && role !== 'admin'){
+        document.getElementById('roleError').innerHTML = 'Invalid Role! Please input either "superadmin" or "admin".'
+        valid = false;
+    }
+    */
+    try{
+        const response = await fetch('/admin/login', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+
+        const result = await response.json();
+
+        if(response.ok) {
+            alert(result.message || 'Login successful!');
+            window.location.href = "/admin.html";
+        } else {
+            alert(result.message || 'Login failed. Please check your input and try again.');
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred. Please try again.')
+    }
+
+    return valid;
+});
+    </script>
+</body>
+</html>

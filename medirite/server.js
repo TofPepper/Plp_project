@@ -56,8 +56,8 @@ const adminRoutes = require('./routes/admin');
 // Using the routes
 app.use('/patients', patientRoutes);
 app.use('/doctors', doctorRoutes);
-//app.use('/appointments', appointmentRoutes);
-//app.use('/admin', adminRoutes);
+app.use('/appointments', appointmentRoutes);
+app.use('/admin', adminRoutes);
 
 
 // Route for the home page (index.html)
